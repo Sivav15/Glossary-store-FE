@@ -79,7 +79,7 @@ function YourOrder() {
                     image,
                     product,
                     category,
-                    quantity,
+                    dummyQuantity,
                     amount,
                     unit,
                   },
@@ -101,11 +101,11 @@ function YourOrder() {
                           <p>{category}</p>
                           <div className="d-flex gap-1">
                             <p>
-                              Qty : {quantity}/{unit}
+                              Qty : {dummyQuantity}/{unit}
                             </p>
                             <p>
                               <Currency width={"1.3rem"} />
-                              {amount * quantity}
+                              {amount * dummyQuantity}
                             </p>
                           </div>
                         </div>
