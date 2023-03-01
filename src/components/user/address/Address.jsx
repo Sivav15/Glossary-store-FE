@@ -10,11 +10,13 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import Toast from '../../toast';
 import { useNavigate, useParams } from 'react-router-dom';
+import Spinner from '../../Spinner';
 
 function Address() {
     const [addShow, setAddShow] = useState(false);
     const [editShow, setEditShow] = useState(false);
     const [data, setData] = useState({});
+    const [loading , setLoading] = useState(false)
     const [products, setProducts] = useState([]);
     const [amount, setAmount] = useState(0);
     const [paymentType, setPaymentType] = useState("")
@@ -117,12 +119,15 @@ const getUpdate = ()=>{
   };
 
   const pay = async()=>{
+
 if(Object.keys(SlectedAddress).length > 0){
 if(paymentType){
   if(products.length > 0){
     if(paymentType === "online payment"){
+      setLoading(true)
          razorpay()
     }else{
+      setLoading(true)
       placeOrder()
     }
    
@@ -194,6 +199,7 @@ if(paymentType){
         }});
 
       if(data.status === 201){
+        setLoading(false)
       // Toast.fire({
       //   icon: "success",
       //   title: data.data.message,
@@ -201,12 +207,14 @@ if(paymentType){
       navigate("/orderSuccess")
 
     } else {
+      setLoading(false)
       Toast.fire({
         icon: "warning",
         title: data.data.message,
       });
     }
     } catch (error) {
+      setLoading(false)
       Toast.fire({
         icon: "error",
         title: error.response.data.message,
@@ -293,8 +301,8 @@ if(paymentType){
                 <h6>Delivery : - RS : 0 </h6>
                 <h5>Total :- RS : { amount }</h5>
             </div>
-            <Button variant="secondary" className='w-100 mt-2 placeOrderButton' onClick={pay}>
-            <i class="fa-solid fa-bucket"></i> Place order
+            <Button variant="secondary" className='w-100 mt-2 placeOrderButton' onClick={loading ? null :  pay}>
+             {loading ? <Spinner width={'1rem'}/> : <><i class="fa-solid fa-bucket"></i> Place order</>}
         </Button>
        {/* <div className='razorpay'>
        <a href="https://razorpay.com/" target="_blank"> <img referrerpolicy="origin"
