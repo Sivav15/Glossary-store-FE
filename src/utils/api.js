@@ -1,6 +1,6 @@
-const host = "http://localhost:4000";
+// const host = "http://localhost:4000";
 // const host = "https://ggggg-sivav15.vercel.app";
-// const host = "https://siva.onrender.com";
+const host = "https://siva.onrender.com";
 // Category api
 export const  getCategoryApi = `${host}/dashboard/getCategory`;;
 export const  getSelectedCategoryApi = `${host}/dashboard/getCategory`;
