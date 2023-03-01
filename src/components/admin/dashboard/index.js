@@ -20,7 +20,7 @@ function DashBoard() {
 try {
   const {data,status} = await axios.get(dashboardOverview)
   // const {bought,outOfStock,sold,totalAvaliableStock,totalProducts} = data
-  if(status==200){
+  if(status === 200){
     setOverview(data)
   }
 } catch (error) {

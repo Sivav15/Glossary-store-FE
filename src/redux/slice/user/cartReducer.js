@@ -1,6 +1,6 @@
-import { createSlice,current } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import Toast from '../../../components/toast'
-// import { original } from 'immer'
+
 
 export const cartReducer = createSlice({
   name: 'cartReducer',

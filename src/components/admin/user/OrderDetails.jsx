@@ -43,7 +43,7 @@ const getProfile = async()=>{
   
 try {
   setLoading({...loading, profile : true});
-  const { data , status } = await axios.get(`${profileDetails}/${id}`); 
+  const { data  } = await axios.get(`${profileDetails}/${id}`); 
   setAddress(data.address)
   setData(data);
   setLoading({...loading, profile : false});
@@ -80,7 +80,7 @@ console.log(data);
         <div className='text-center mt-5'>
          <h5> Name : {data.name} </h5>
           <h5>
-          Mobile : {data.mobile == undefined ? "Mobile number is not found" : data.mobile}
+          Mobile : {data.mobile === undefined ? "Mobile number is not found" : data.mobile}
           </h5>
         </div>
           <h5 className='text-center'>Address</h5>

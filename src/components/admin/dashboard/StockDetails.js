@@ -1,11 +1,8 @@
 import React from 'react'
-import Search from '../../user/Search'
 import Table from 'react-bootstrap/Table';
 import { useState } from 'react';
-import axios from 'axios';
 import { useEffect } from 'react';
-import { dashboardProducts } from '../../../utils/api';
-import { getAdminProduct, getDashboardProduct } from '../../../redux/slice/admin/AdminProductReducer';
+import {getDashboardProduct } from '../../../redux/slice/admin/AdminProductReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Form from 'react-bootstrap/Form';

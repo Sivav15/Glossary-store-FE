@@ -1,3 +1,5 @@
+import env from "react-dotenv";
+
 var headers = new Headers();
 headers.append("X-CSCAPI-KEY", "ODN3RGt2Vm9VbndUVnFSdG90aGFOSlVLcWJnVVZXNTdPRnpMUFAwNg==");
 

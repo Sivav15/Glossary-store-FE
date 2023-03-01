@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { orderdetails, yourOrder} from "../../../utils/api";
+import {yourOrder} from "../../../utils/api";
 import Toast from "../../toast";
 import "./yourOrder.css";
 import {Currency} from "../../Currency";
@@ -47,7 +47,7 @@ function YourOrder() {
   loading ? <div className="d-flex justify-content-center"><Spinner  width={"2rem"}/></div> : 
   
   
-    order.length == 0 ? <div className="d-flex justify-content-center text-danger">Order not found</div> : order.length > 0 &&
+    order.length === 0 ? <div className="d-flex justify-content-center text-danger">Order not found</div> : order.length > 0 &&
     order.map(
       (
         {
@@ -82,7 +82,6 @@ function YourOrder() {
                     quantity,
                     amount,
                     unit,
-                    dummyTotal,
                   },
                   i
                 ) => {

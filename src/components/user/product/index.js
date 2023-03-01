@@ -28,6 +28,7 @@ function Product() {
      const categorys = useSelector((state) => state.categoryReducer.category);
      const loading = useSelector((state)=> state.productReducer.isLoading);
 
+     console.log(loading);
 
      const cart = (data)=>{
       dispatch(addToCart(data))
@@ -98,7 +99,7 @@ function Product() {
 <Row className='justify-content-center'>
 
   {
-    loading ? <div className="d-flex justify-content-center"><Spinner  width={"2rem"}/></div> :  products.length > 0 && products.map((product,index)=>{
+    loading ? <div className="d-flex justify-content-center"><Spinner  width={"2rem"}/></div> : products.map((product,index)=>{
       return <Col sm={6} md = {6} xl={4} xxl={3} className="product-card " key={index}>
     <div>
     <img src={product.image} alt={product.product}/>

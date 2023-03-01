@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { dashboardProducts, getAdminProductApi, getAdminSelectedProductApi, users } from "../../../utils/api";
+import { dashboardProducts, getAdminProductApi, users } from "../../../utils/api";
 
 const initialState = {
     product: [],

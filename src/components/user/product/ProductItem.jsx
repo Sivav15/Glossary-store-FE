@@ -1,8 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button} from 'react-bootstrap';
 import {Currency1} from '../../Currency';
 import './item.css'
@@ -12,7 +11,7 @@ function ProductItem() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const products = useSelector((state)=> state.cartReducer.buyNow);
-    const {image, product, amount, availableInStock,category,dummyQuantity,dummyTotal,public_id,unit,sold} = products;
+    const {image, product, amount,category,dummyQuantity,dummyTotal,unit} = products;
 
     const increment = (quantity)=>{
       dispatch(buyNowIncrement(quantity));
