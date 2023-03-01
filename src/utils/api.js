@@ -1,9 +1,13 @@
-// const host = "http://localhost:4000";
-// const host = "https://ggggg-sivav15.vercel.app";
-const host = "https://siva.onrender.com";
+let host;
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  host = "http://localhost:4000"
+} else {
+  host = "https://siva.onrender.com"
+}
+
 // Category api
-export const  getCategoryApi = `${host}/dashboard/getCategory`;;
-export const  getSelectedCategoryApi = `${host}/dashboard/getCategory`;
+export const getCategoryApi = `${host}/dashboard/getCategory`;;
+export const getSelectedCategoryApi = `${host}/dashboard/getCategory`;
 export const addCategoryApi = `${host}/dashboard/setCategory`;
 export const editCategoryApi = `${host}/dashboard/editCategory`;
 export const deleteCategoryApi = `${host}/dashboard/deleteCategory`;
@@ -13,7 +17,7 @@ export const deleteCategoryApi = `${host}/dashboard/deleteCategory`;
 // product api 
 export const addProductApi = `${host}/dashboard/addProduct`;
 export const getAdminProductApi = `${host}/dashboard/getProduct`;
-export const  getAdminSelectedProductApi =`${host}/dashboard/getProduct`;
+export const getAdminSelectedProductApi = `${host}/dashboard/getProduct`;
 export const editEditApi = `${host}/dashboard/editProduct`;
 export const deleteDeleteApi = `${host}/dashboard/deleteProduct`;
 
@@ -67,7 +71,8 @@ export const orderdetails = `${host}/dashboard/order-details`;
 
 
 export const header = {
-    headers: {
-      authorization: window.localStorage.getItem("token")
-    }}
+  headers: {
+    authorization: window.localStorage.getItem("token")
+  }
+}
 
