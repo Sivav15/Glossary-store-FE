@@ -17,7 +17,7 @@ function OrderSuccess() {
             <span className="checkmark">✓</span>
           </div>
           <h1 className='h1'>Success</h1>
-          <h6>Your invoice send your register email address</h6>
+          <h6>When your order is delivery invoice send in your register email address</h6>
           <button className='ww' onClick={() => {
             dispatch(clearCart())
             navigate('/product')
