@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import Toast from '../../toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../../Spinner';
+import { getProduct } from '../../../redux/slice/user/productReducer';
 
 
 function Address() {
@@ -230,12 +231,11 @@ try {
         }});
 
       if(data.status === 201){
-        setLoading(false)
-      // Toast.fire({
-      //   icon: "success",
-      //   title: data.data.message,
-      // });
+        dispatch(getProduct())
+     setTimeout(()=>{
+      setLoading(false)
       navigate("/orderSuccess")
+     },1000)
 
     } else {
       setLoading(false)
