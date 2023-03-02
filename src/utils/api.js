@@ -57,6 +57,9 @@ export const profileDetails = `${host}/user/profileDetails`;
 
 export const addOrder = `${host}/order/addOrder`;
 export const yourOrder = `${host}/order/yourOrders`;
+export const tokenChecker = `${host}/order/tokenChecker`;
+
+
 
 
 // dashboard api

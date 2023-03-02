@@ -5,7 +5,7 @@ import { getAddress } from '../../../redux/slice/statusReducer';
 import AddAddress from './AddAddress';
 import EditAddress from './EditAddress';
 import './address.css'
-import { addOrder, deleteAddressApi } from '../../../utils/api';
+import { addOrder, deleteAddressApi, tokenChecker } from '../../../utils/api';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Toast from '../../toast';
@@ -120,42 +120,64 @@ const getUpdate = ()=>{
   };
 
   const pay = async()=>{
+try {
+  setLoading(true)
+  const token = axios.get(tokenChecker,{
+    headers: {
+      authorization: window.localStorage.getItem("token")
+    }});
 
-if(Object.keys(SlectedAddress).length > 0){
-if(paymentType){
-  if(products.length > 0){
-    if(paymentType === "online payment"){
+  if(Object.keys(SlectedAddress).length > 0){
+  if(paymentType){
+    if(products.length > 0){
+      if(paymentType === "online payment"){
+        
+       alert(`
+       Card : 4111 1111 1111 1111
+       Expire date : 11/28
+       Cvv : 123
+       `)
+  let {status} = await token;
+  if(status === 200){
+    setLoading(false)
+    razorpay()
+  }
+
+  
       
-     alert(`
-     Card : 4111 1111 1111 1111
-     Expire date : 11/28
-     Cvv : 123
-     `)
-          razorpay()
+      }else{
+        let {status} = await token;
+  if(status === 200){
+    placeOrder()
+  }
 
+      }
+     
     
     }else{
-      placeOrder()
+      Toast.fire({
+        icon: "warning",
+        title: "select minimum one product",
+      });
     }
-   
+  }else{
+      Toast.fire({
+        icon: "warning",
+        title: "select payment type",
+      });
+  }
   
   }else{
     Toast.fire({
       icon: "warning",
-      title: "select minimum one product",
+      title: "select address",
     });
   }
-}else{
-    Toast.fire({
-      icon: "warning",
-      title: "select payment type",
-    });
-}
-
-}else{
+} catch (error) {
+  setLoading(false)
   Toast.fire({
-    icon: "warning",
-    title: "select address",
+    icon: "error",
+    title: error.response.data.message,
   });
 }
   }
@@ -169,6 +191,7 @@ if(paymentType){
       name: "Grocery store",
       description: "for testing purpose",
       handler: function (response) {
+        setLoading(true)
         placeOrder(response.razorpay_payment_id)
       },
       prefill: {
@@ -200,7 +223,7 @@ if(paymentType){
         amount,
         paymentMode : paymentType,
       }
-      setLoading(true)
+    
        const data = await axios.post(addOrder,obj, {
         headers: {
           authorization: window.localStorage.getItem("token")
