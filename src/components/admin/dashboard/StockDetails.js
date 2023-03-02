@@ -57,7 +57,7 @@ function StockDetails() {
           type="search"
           placeholder={`Search product`}
           value={product}
-           onChange={(e) => {setProduct(e.target.value);setStock("")}}
+           onChange={(e) => {setProduct(e.target.value)}}
             aria-label="Input group example"
             aria-describedby="btnGroupAddon2"
             className='shadow-none'
