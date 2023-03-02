@@ -99,7 +99,7 @@ function Product() {
 <Row className='justify-content-center'>
 
   {
-    loading ? <div className="d-flex justify-content-center"><Spinner  width={"2rem"}/></div> : products.map((product,index)=>{
+    loading ? <div className="d-flex justify-content-center bg-danger"><Spinner  width={"2rem"}/></div> : products.map((product,index)=>{
       return <Col sm={6} md = {6} xl={4} xxl={3} className="product-card " key={index}>
     <div>
     <img src={product.image} alt={product.product}/>
