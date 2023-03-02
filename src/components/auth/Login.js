@@ -60,7 +60,7 @@ function Login() {
           }))
           Swal.fire(
             "Login Successfull",
-            "Your session expiry in 5 minutes!",
+            "Your session expiry in 10 minutes!",
             "success"
           );
 if(isAdmin){
