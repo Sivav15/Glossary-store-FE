@@ -12,6 +12,7 @@ import Toast from '../../toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../../Spinner';
 
+
 function Address() {
     const [addShow, setAddShow] = useState(false);
     const [editShow, setEditShow] = useState(false);
@@ -124,10 +125,16 @@ if(Object.keys(SlectedAddress).length > 0){
 if(paymentType){
   if(products.length > 0){
     if(paymentType === "online payment"){
-      setLoading(true)
-         razorpay()
+      
+     alert(`
+     Card : 4111 1111 1111 1111
+     Expire date : 11/28
+     Cvv : 123
+     `)
+          razorpay()
+
+    
     }else{
-      setLoading(true)
       placeOrder()
     }
    
@@ -159,7 +166,7 @@ if(paymentType){
       key_secret: "UFEaoGwrbwHdSxQ0ph2J9TwU",
       amount: parseInt(amount) * 100,
       currency: "INR",
-      name: "Glosary store",
+      name: "Grocery store",
       description: "for testing purpose",
       handler: function (response) {
         placeOrder(response.razorpay_payment_id)
@@ -193,6 +200,7 @@ if(paymentType){
         amount,
         paymentMode : paymentType,
       }
+      setLoading(true)
        const data = await axios.post(addOrder,obj, {
         headers: {
           authorization: window.localStorage.getItem("token")
