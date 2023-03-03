@@ -48,7 +48,6 @@ function Product() {
      
      useEffect(()=>{
       loading = true
-
       dispatch(getProduct({
         category,
         search,
