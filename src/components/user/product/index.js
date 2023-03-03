@@ -50,7 +50,7 @@ function Product() {
     }
 
     useEffect(()=>{
-      // loading = true
+      loading = true
       setTimeout(()=>{
         dispatch(getProduct()) 
       dispatch(getCategory());
