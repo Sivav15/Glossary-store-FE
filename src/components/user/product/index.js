@@ -5,10 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
-// import { product } from '../../../redux/slice/user/productReducer'
 import { addToBuyNow, addToCart } from '../../../redux/slice/user/cartReducer'
 import { setCartToggle } from '../../../redux/slice/toggleReducer'
-import Search from '../Search';
 import { getProduct } from '../../../redux/slice/user/productReducer';
 import { getCategory } from '../../../redux/slice/admin/categoryReducer';
 import { ButtonToolbar, Form, InputGroup } from 'react-bootstrap';
@@ -22,7 +20,6 @@ function Product() {
   const [category,setCategory] = useState("");
   const [search,setSearch] = useState("")
   const navigate = useNavigate();
-  // const [product,setProduct] = useState("")
    const dispatch = useDispatch();
      const products = useSelector((state)=> state.productReducer.product);
      const categorys = useSelector((state) => state.categoryReducer.category);
@@ -36,12 +33,6 @@ function Product() {
 
      
 
-     useEffect(()=>{
-      dispatch(getProduct({
-        category,
-        search,
-      })) 
-     },[search,category])
     //  onClick={()=> dispatch(setCartToggle(false))} onWheel={()=> dispatch(setCartToggle(false))}
     const buyOrder = (product)=>{
       dispatch(addToBuyNow(product))
@@ -55,6 +46,14 @@ function Product() {
       dispatch(getCategory());
       },100)
      },[]);
+
+     
+     useEffect(()=>{
+      dispatch(getProduct({
+        category,
+        search,
+      })) 
+     },[search,category])
   return (
     <Container className='product-container'>   
 <h1 class="products-heading"> Products</h1>
