@@ -62,7 +62,6 @@ try {
     getProfile()
 },[id])
 
-console.log(data);
 
   return (
     <div>

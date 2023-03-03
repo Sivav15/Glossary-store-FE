@@ -10,8 +10,8 @@ import DisplayImage from "./DisplayImage";
 import axios from "axios";
 import { deleteDeleteApi } from "../../../utils/api";
 import Swal from "sweetalert2";
-import Spinner from "../../Spinner";
 import { getCategory } from "../../../redux/slice/admin/categoryReducer";
+import Loading from "../../Loading";
 
 function AddProduct() {
   const getProduct = useSelector((state) => state.adminProductReducer.product);
@@ -124,7 +124,7 @@ function AddProduct() {
       <div className="mt-3 table-responsive">
       {
               loading ? (<div className="d-flex justify-content-center">
-                <Spinner width ={"3rem"}/>
+                <Loading width ={"3.5rem"}/>
               </div>) :  <Table bordered  className="text-center align-middle">
           <thead>
             <tr>

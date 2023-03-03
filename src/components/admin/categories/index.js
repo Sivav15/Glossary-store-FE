@@ -9,7 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { deleteCategoryApi } from "../../../utils/api";
-import Spinner from "../../Spinner";
+import Loading from "../../Loading";
+
 
 function AddCategories() {
   const [addShow, setAddShow] = useState(false);
@@ -101,7 +102,7 @@ function AddCategories() {
       <div className="mt-3">
 
       {
-              loading ?<div className="d-flex justify-content-center"><Spinner width={"2rem"}/> </div> : category.length > 0 && category ? (  <Table bordered  className="text-center">
+              loading ?<div className="d-flex justify-content-center"><Loading width ={"3.5rem"}/> </div> : category.length > 0 && category ? (  <Table bordered  className="text-center">
               <thead>
                 <tr>
                   <th>#</th>
