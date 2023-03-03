@@ -117,7 +117,7 @@ function EditProductModal({ show, handleClose, data }) {
         .trim();
     }
   const onImageEdit = async (imgUrl) => {
-      var imgExt = getUrlExtension(imgUrl);
+      var imgExt = getUrlExtension(imgUrl || "https://rukminim1.flixcart.com/image/416/416/kv6zvrk0/washing-powder/4/5/o/plus-jasmine-and-rose-tide-original-imag85cbd6expw6u.jpeg");
       setImgLoading(true)
       const response = await fetch(imgUrl);
       // let filename = `${imgUrl.name}`;

@@ -106,12 +106,12 @@ function Product() {
       return <Col sm={6} md = {6} xl={4} xxl={3} className="product-card " key={index}>
     <div>
     <img src={product.image} alt={product.product}/>
-      <h5>{product.product}</h5>
-      <p><Currency width={"1.2rem"}/>{product.amount}{" "}/{product.unit}</p>
+      <h3>{product.product}</h3>
+      <p>Amount : <Currency width={"1.2rem"}/>{product.amount}{" "}/{product.unit}</p>
       {
         product.availableInStock < 10 && product.availableInStock > 0 ? <p style={{
-          color : "red"
-        }} >only {product.availableInStock} stock available</p>: product.availableInStock === 0 ? <p style={{color : "red"}} >Out of stock</p> : <p style={{color : "blue"}}>{product.availableInStock} stock is available</p>
+          color : "red",
+        }} >only {product.availableInStock} stock available</p>: product.availableInStock === 0 ? <p style={{color : "red",margin : "0" }} >Out of stock</p> : <p style={{color : "blue"}}>{product.availableInStock} stock is available</p>
       }
       <Button variant="secondary"  className='product-button' disabled={product.availableInStock === 0 ? true : false} onClick={()=> cart(product)}>Add to cart</Button>
       <Button variant="secondary" className='product-button ms-1'   disabled={product.availableInStock === 0 ? true : false} onClick={()=> buyOrder(product)}> Buy Now</Button>
