@@ -45,8 +45,11 @@ const productReducer = createSlice({
             state.isLoading = true;
           })
           .addCase(getProduct.fulfilled, (state, action) => {
-                    state.isLoading = false;
+                  //  setTimeout(()=>{
                     state.product = action.payload.data;
+                    state.isLoading = true;
+                    
+                  //  },4000)
           })
           .addCase(getProduct.rejected, (state, action) => {
             state.isLoading = false;
