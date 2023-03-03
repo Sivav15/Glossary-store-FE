@@ -50,6 +50,7 @@ function Product() {
     }
 
     useEffect(()=>{
+      console.log("fffffffffffffffffffffffffff");
       dispatch(getProduct()) 
       dispatch(getCategory());
      },[]);
