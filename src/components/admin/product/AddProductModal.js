@@ -14,7 +14,7 @@ import Toast from "../../toast";
 
 function AddProductModal({ show, handleClose }) {
   const dispatch = useDispatch();
-  const support_formats = ["image/png", "image/webp"];
+  const support_formats = ["image/png", "image/webp","image/jpeg", "image/jpg"];
   const fileRef = useRef(null);
   const [loading, setLoading] = useState(false);
   // To get the data in reducer
