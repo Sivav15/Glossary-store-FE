@@ -17,8 +17,8 @@ import Spinner from '../../Spinner';
 
 
 function Product() {
-  const [category,setCategory] = useState("");
-  const [search,setSearch] = useState("")
+  const [category,setCategory] = useState();
+  const [search,setSearch] = useState()
   const navigate = useNavigate();
    const dispatch = useDispatch();
      const products = useSelector((state)=> state.productReducer.product);
@@ -40,19 +40,20 @@ function Product() {
       navigate(`/p/${product.product}`)
     }
 
-    useEffect(()=>{
-      setTimeout(()=>{
-        dispatch(getProduct()) 
-      dispatch(getCategory());
-      },100)
-     },[]);
+    // useEffect(()=>{
+    //     dispatch(getProduct()) 
+    //   dispatch(getCategory());
+    //  },[]);
 
      
      useEffect(()=>{
+      loading = true
+
       dispatch(getProduct({
         category,
         search,
       })) 
+      dispatch(getCategory());
      },[search,category])
   return (
     <Container className='product-container'>   
