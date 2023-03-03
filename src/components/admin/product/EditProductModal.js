@@ -17,7 +17,7 @@ function EditProductModal({ show, handleClose, data }) {
     const categorys = useSelector((state) => state.categoryReducer.category);
     const fileRef = useRef(null);
     const dispatch = useDispatch();
-    const support_formats = ["image/png","image/webp"];
+    const support_formats = ["image/png", "image/webp","image/jpeg", "image/jpg"];
     const [loading,setLoading] = useState(false)
     const [imgLoading,setImgLoading] = useState(false)
    const [changingQuantity,setChangingQuantity] = useState(0);  
