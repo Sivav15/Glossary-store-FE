@@ -16,17 +16,17 @@ function index() {
         },
         {
             img:"image/cat-2.png",
-            title :"Fresh fruits",
+            title :"Fruits",
             offer :"upto 45% off",
         },
         {
             img:"image/cat-3.png",
-            title :"Dairy products",
+            title :"Dairy & Eggs",
             offer :"upto 45% off",
         },
         {
-            img:"image/cat-4.png",
-            title :"fresh meat",
+            img:"image/cart-4.jpg",
+            title :"Household Care",
             offer :"upto 45% off",
         },        
     ]

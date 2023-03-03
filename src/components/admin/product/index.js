@@ -12,6 +12,7 @@ import { deleteDeleteApi } from "../../../utils/api";
 import Swal from "sweetalert2";
 import { getCategory } from "../../../redux/slice/admin/categoryReducer";
 import Loading from "../../Loading";
+import Spinner from "../../Spinner";
 
 function AddProduct() {
   const getProduct = useSelector((state) => state.adminProductReducer.product);
@@ -20,6 +21,10 @@ function AddProduct() {
   const [addShow, setAddShow] = useState(false);
   const [editShow, setEditShow] = useState(false);
   const [data, setData] = useState({});
+  const [del,setDel] = useState({
+    loading : false,
+    id : "",
+  });
 
   const addHandleClose = () => setAddShow(false);
   const addHandleShow = () => setAddShow(true);
@@ -59,6 +64,7 @@ function AddProduct() {
 
   // Delete product
   const deleteProduct = async (id) => {
+    
     // sweet alert for delete
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -80,12 +86,14 @@ function AddProduct() {
     });
     if (swal.isConfirmed) {
       try {
+        setDel({...del,loading : true, id});
         const value = await axios.delete(`${deleteDeleteApi}/${id}`, {
           headers: {
             authorization: window.localStorage.getItem("token")
           }});
         if (value.status === 200) {
           dispatch(getAdminProduct());
+          setDel({...del,loading : false, id : ""});
           swalWithBootstrapButtons.fire({
             title: "Deleted!",
             text: `${value.data.message}`,
@@ -94,6 +102,7 @@ function AddProduct() {
             timer: 1300,
           });
         } else {
+          setDel({...del,loading : false, id : ""});
           swalWithBootstrapButtons.fire({
             title: "",
             text: `${value.response.data.message}`,
@@ -102,7 +111,7 @@ function AddProduct() {
           });
         }
       } catch (error) {
-        console.log(error);
+        setDel({...del,loading : false, id : ""});
         swalWithBootstrapButtons.fire({
           title: "",
           text: `${error.response.data.message}`,
@@ -112,6 +121,7 @@ function AddProduct() {
       }
     }
   };
+
 
   return (
     <Container className="addProduct">
@@ -184,8 +194,15 @@ function AddProduct() {
                           >
                             <i class="fas fa-edit"></i> Edit
                           </Button>{" "}
-                          <Button variant="danger" onClick={() => deleteProduct(_id)}>
-                          <i class="fas fa-trash-alt"></i> Delete
+                          <Button variant="danger" onClick={del.loading ? null : () => deleteProduct(_id)}>
+                            {
+                              del.id === _id ? 
+                              <> {del.loading ? <div style={{minWidth : "60px"}}><Spinner width={"1.2rem"} /></div>: <><i class="fas fa-trash-alt"></i> Delete</>}</> : <><i class="fas fa-trash-alt"></i> Delete</>
+                              
+                            }
+                            
+                            
+                          
                           </Button>
                         </td>
                       </tr>

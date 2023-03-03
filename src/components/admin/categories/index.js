@@ -10,13 +10,17 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { deleteCategoryApi } from "../../../utils/api";
 import Loading from "../../Loading";
+import Spinner from "../../Spinner";
 
 
 function AddCategories() {
   const [addShow, setAddShow] = useState(false);
   const [editShow, setEditShow] = useState(false);
   const [data, setData] = useState("");
-
+  const [del,setDel] = useState({
+    loading : false,
+    id : "",
+  });
   const addHandleClose = () => setAddShow(false);
   const addHandleShow = () => setAddShow(true);
   const editHandleClose = () => setEditShow(false);
@@ -56,6 +60,7 @@ function AddCategories() {
     });
     if (swal.isConfirmed) {
       try {
+        setDel({...del,loading : true, id});
         const value = await axios.delete(
           `${deleteCategoryApi}/${id}`, {
             headers: {
@@ -64,6 +69,7 @@ function AddCategories() {
         );
         if (value.status === 200) {
           dispatch(getCategory());
+          setDel({...del,loading : false, id : ""});
           swalWithBootstrapButtons.fire({
             title: "Deleted!",
             text: `${value.data.message}`,
@@ -72,6 +78,7 @@ function AddCategories() {
             timer: 1300,
           });
         } else {
+          setDel({...del,loading : false, id : ""});
           swalWithBootstrapButtons.fire({
             title: "",
             text: `${value.response.data.message}`,
@@ -80,7 +87,7 @@ function AddCategories() {
           });
         }
       } catch (error) {
-        console.log(error);
+        setDel({...del,loading : false, id : ""});
         swalWithBootstrapButtons.fire({
           title: "",
           text: `${error.response.data.message}`,
@@ -129,7 +136,13 @@ function AddCategories() {
                           >
                             <i class="fas fa-edit"></i> Edit
                           </Button>{" "}
-                          <Button variant="danger" onClick={() => handleDelete(_id)}><i class="fas fa-trash-alt"></i> Delete</Button>
+                          <Button variant="danger" onClick={del.loading ? null : () => handleDelete(_id)}>
+                          {
+                              del.id === _id ? 
+                              <> {del.loading ? <div style={{minWidth : "60px"}}><Spinner width={"1.2rem"} /></div>: <><i class="fas fa-trash-alt"></i> Delete</>}</> : <><i class="fas fa-trash-alt"></i> Delete</>
+                              
+                            }
+                            </Button>
                         </td>
                       </tr>
                     );
