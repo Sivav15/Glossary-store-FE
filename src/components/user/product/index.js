@@ -28,16 +28,13 @@ function Product() {
      const categorys = useSelector((state) => state.categoryReducer.category);
      const loading = useSelector((state)=> state.productReducer.isLoading);
 
-     console.log(loading);
+     
 
      const cart = (data)=>{
       dispatch(addToCart(data))
      }
 
-     useEffect(()=>{
-      dispatch(getProduct()) 
-      dispatch(getCategory());
-     },[]);
+     
 
      useEffect(()=>{
       dispatch(getProduct({
@@ -51,6 +48,11 @@ function Product() {
       dispatch(setCartToggle(false))
       navigate(`/p/${product.product}`)
     }
+
+    useEffect(()=>{
+      dispatch(getProduct()) 
+      dispatch(getCategory());
+     },[]);
   return (
     <Container className='product-container'>   
 <h1 class="products-heading"> Products</h1>
