@@ -50,9 +50,11 @@ function Product() {
     }
 
     useEffect(()=>{
-      loading = true
-      dispatch(getProduct()) 
+      // loading = true
+      setTimeout(()=>{
+        dispatch(getProduct()) 
       dispatch(getCategory());
+      })
      },[]);
   return (
     <Container className='product-container'>   
