@@ -6,7 +6,7 @@ import { getAdminProductApi, getAdminSelectedProductApi } from '../../../utils/a
 
 const  initialState = {
   product: [],
-  isLoading : true,
+  isLoading : false,
 }
 
 

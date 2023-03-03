@@ -26,7 +26,7 @@ function Product() {
    const dispatch = useDispatch();
      const products = useSelector((state)=> state.productReducer.product);
      const categorys = useSelector((state) => state.categoryReducer.category);
-     const loading = useSelector((state)=> state.productReducer.isLoading);
+     let loading = useSelector((state)=> state.productReducer.isLoading);
 
      
 
@@ -50,10 +50,8 @@ function Product() {
     }
 
     useEffect(()=>{
-      console.log("fffffffffffffffffffffffffff");
+      loading = true
       dispatch(getProduct()) 
-     },[]);
-     useEffect(()=>{
       dispatch(getCategory());
      },[]);
   return (
