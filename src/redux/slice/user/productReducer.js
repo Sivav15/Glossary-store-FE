@@ -42,6 +42,7 @@ const productReducer = createSlice({
     extraReducers(builder) {
         builder
           .addCase(getProduct.pending, (state, action) => {
+            console.log("kkkkkkkkkkkkkkkkk");
             state.isLoading = true;
           })
           .addCase(getProduct.fulfilled, (state, action) => {
