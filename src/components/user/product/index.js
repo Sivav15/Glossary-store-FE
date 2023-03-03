@@ -40,10 +40,10 @@ function Product() {
       navigate(`/p/${product.product}`)
     }
 
-    // useEffect(()=>{
-    //     dispatch(getProduct()) 
-    //   dispatch(getCategory());
-    //  },[]);
+    useEffect(()=>{
+   
+      dispatch(getCategory());
+     },[]);
 
      
      useEffect(()=>{
@@ -52,7 +52,7 @@ function Product() {
         category,
         search,
       })) 
-      dispatch(getCategory());
+
      },[search,category])
   return (
     <Container className='product-container'>   
