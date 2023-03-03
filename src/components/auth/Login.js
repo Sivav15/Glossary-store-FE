@@ -20,7 +20,7 @@ function Login() {
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "Siva@123",
+      password: "",
     },
     validate: (values) => {
       const errors = {};
