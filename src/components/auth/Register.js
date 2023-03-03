@@ -25,10 +25,10 @@ function Register() {
   })
   const formik = useFormik({
     initialValues: {
-      name: "siva",
-      email: "siva15vpks@gmail.com",
-      password: "Siva@1234",
-      conformPassword: "Siva@1234",
+      name: "",
+      email: "",
+      password: "",
+      conformPassword: "",
     },
     validationSchema: yup.object({
       name: yup.string().required(),
