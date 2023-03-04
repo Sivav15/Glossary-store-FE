@@ -43,8 +43,8 @@ function AddProductModal({ show, handleClose }) {
         .required()
         .test(
           "FILE_SIZE",
-          "upload image less than 500kb",
-          (value) => !value || (value && value.size <= 1024 * 1024 * 0.5)
+          "upload image less than 1MB",
+          (value) => !value || (value && value.size <= 1024 * 1024 * 1)
         )
         .test(
           "FILE_FORMAT",

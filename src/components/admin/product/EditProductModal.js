@@ -49,8 +49,8 @@ function EditProductModal({ show, handleClose, data }) {
              .required()
              .test(
               "FILE_SIZE",
-              "Image less than 500kb",
-              (value)=> !value || (value && value.size <= 1024 * 1024 * .5)
+              "Image less than 1MB",
+              (value)=> !value || (value && value.size <= 1024 * 1024 * 1)
              ).test(
               'FILE_FORMAT',
               'Png & webp file format only support',
