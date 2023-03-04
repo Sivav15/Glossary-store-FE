@@ -111,7 +111,7 @@ function Product() {
       {
         product.availableInStock < 10 && product.availableInStock > 0 ? <p style={{
           color : "red",
-        }} >only {product.availableInStock} stock available</p>: product.availableInStock === 0 ? <p style={{color : "red",margin : "0" }} >Out of stock</p> : <p style={{color : "blue"}}>{product.availableInStock} stock is available</p>
+        }} >only {product.availableInStock} stock available</p>: product.availableInStock === 0 ? <p style={{color : "red" }} >Out of stock</p> : <p style={{color : "blue"}}>{product.availableInStock} stock is available</p>
       }
       <Button variant="secondary"  className='product-button' disabled={product.availableInStock === 0 ? true : false} onClick={()=> cart(product)}>Add to cart</Button>
       <Button variant="secondary" className='product-button ms-1'   disabled={product.availableInStock === 0 ? true : false} onClick={()=> buyOrder(product)}> Buy Now</Button>
