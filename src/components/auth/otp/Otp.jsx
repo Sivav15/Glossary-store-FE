@@ -155,7 +155,7 @@ if(otp.second.length ===1){
 }else{
     Toast.fire({
             icon: "warning",
-            title: "First value missing",
+            title: "Enter a otp",
           });
 }
 }
