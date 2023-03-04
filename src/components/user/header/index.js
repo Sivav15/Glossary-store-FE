@@ -53,7 +53,10 @@ function Navbar() {
     
     <div className="icons">
         <span className="fas fa-shopping-cart carts" id="cart-btn" title='Cart' onClick={toggle}><span> {cartLength}</span></span>
-        <span className="fas fa-user kk" id="login-btn" onClick={()=>navigate('/profile')}></span>
+        {
+  token ?   <span className="fas fa-user kk" id="login-btn" onClick={()=>navigate('/profile')}></span> : null
+}
+        
         {
           token ? <span className="fas fa-sign-out-alt kk" title='Sign out' onClick={()=>{
             localStorage.removeItem("token");
