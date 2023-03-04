@@ -155,7 +155,7 @@ if(otp.second.length ===1){
 }else{
     Toast.fire({
             icon: "warning",
-            title: "Enter a otp",
+            title: "Enter a one time password",
           });
 }
 }
