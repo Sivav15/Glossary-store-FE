@@ -2,7 +2,8 @@ let host;
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   host = "http://localhost:4000"
 } else {
-  host = "https://siva.onrender.com"
+  // host = "https://siva.onrender.com"
+  host = "https://glossary-store-be.vercel.app"
 }
 
 // Category api

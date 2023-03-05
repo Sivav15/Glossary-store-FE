@@ -122,7 +122,7 @@ const getUpdate = ()=>{
 
   const pay = async()=>{
 try {
-  setLoading(true)
+
   const token = axios.get(tokenChecker,{
     headers: {
       authorization: window.localStorage.getItem("token")
@@ -140,7 +140,7 @@ try {
        `)
   let {status} = await token;
   if(status === 200){
-    setLoading(false)
+    setLoading(true)
     razorpay()
   }
 
@@ -149,6 +149,7 @@ try {
       }else{
         let {status} = await token;
   if(status === 200){
+    setLoading(true)
     placeOrder()
   }
 
@@ -225,10 +226,10 @@ try {
         paymentMode : paymentType,
       }
     
-       const data = await axios.post(addOrder,obj, {
-        headers: {
-          authorization: window.localStorage.getItem("token")
-        }});
+      //  const data = await axios.post(addOrder,obj, {
+      //   headers: {
+      //     authorization: window.localStorage.getItem("token")
+      //   }});
 
       if(data.status === 201){
         dispatch(getProduct())
