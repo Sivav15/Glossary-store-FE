@@ -140,7 +140,6 @@ try {
        `)
   let {status} = await token;
   if(status === 200){
-    setLoading(true)
     razorpay()
   }
 
@@ -226,10 +225,10 @@ try {
         paymentMode : paymentType,
       }
     
-      //  const data = await axios.post(addOrder,obj, {
-      //   headers: {
-      //     authorization: window.localStorage.getItem("token")
-      //   }});
+       const data = await axios.post(addOrder,obj, {
+        headers: {
+          authorization: window.localStorage.getItem("token")
+        }});
 
       if(data.status === 201){
         dispatch(getProduct())
