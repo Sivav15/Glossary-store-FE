@@ -316,7 +316,7 @@ try {
                           </div>
                           <div>
                             <h6>{item.product}</h6>
-                            <p>{item.amount}{" "}/{item.unit} * {item.dummyQuantity}{" "}Qty</p>
+                            <p>Qty : - {`  `}{item.dummyQuantity}{" "}{item.unit} </p>
                           </div>
                          </div>
                           <div>
