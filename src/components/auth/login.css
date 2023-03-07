@@ -108,3 +108,19 @@
 .eye > i {
   color: black;
 }
+
+.sss{
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  position: absolute;
+right: 15px;
+bottom: 15px;
+}
+
+.sss p {
+  text-indent: 20px;
+  margin: 6px;
+}

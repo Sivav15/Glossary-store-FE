@@ -86,6 +86,13 @@ if(isAdmin){
   });
   return (
     <div className="login-wrapper">
+            <div className="sss" >
+        <h6>Admin : - </h6> 
+                <p>Email : siva@gmail.com</p>
+                <p>Password : Siva@1234</p>  
+        <h6>User : -</h6>   
+               <p>Kindly to create an account</p> 
+      </div>
       <Form
         className="form"
         onSubmit={(values) => {
@@ -156,6 +163,8 @@ if(isAdmin){
           <span onClick={() => navigate("/register")}> Sign up</span>
         </div>
       </Form>
+
+
     </div>
   );
 }
