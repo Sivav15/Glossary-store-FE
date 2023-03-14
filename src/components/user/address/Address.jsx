@@ -231,7 +231,10 @@ try {
         }});
 
       if(data.status === 201){
-        dispatch(getProduct())
+        dispatch(getProduct({
+          category : "", 
+          search : ""
+        }))
      setTimeout(()=>{
       setLoading(false)
       navigate("/orderSuccess")
