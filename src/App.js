@@ -75,7 +75,7 @@ if(status === 200){
       }}
     >
       {
-        load ? <div> <Loading /> </div> : <BrowserRouter>
+        load ? <div className="d-flex justify-content-center align-items-center" style={{minHeight : "100vh"}} > <Loading width = {"8rem"} /> </div> : <BrowserRouter>
         <AdminRoute  >
           <Routes>  
             {/* admin */}
