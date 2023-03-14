@@ -38,6 +38,7 @@ import Otp from "./components/auth/otp/Otp";
 import Loading from "./components/Loading";
 import { api } from "./utils/api";
 import axios from "axios";
+import PreLoading from "./components/preLoading/PreLoading";
 
 
 
@@ -61,13 +62,13 @@ const db = async()=>{
 try {
   const {status,data} = await axios.get(api)
 if(status === 200){
-  setLoad(false)
+  // setLoad(false)
 }
 } catch (error) {
   console.log(error);
 }
 }
-
+{/* <div className="d-flex justify-content-center align-items-center" style={{minHeight : "100vh"}} > <Loading width = {"8rem"} /> </div>  */}
   return (
     <div
       onWheel={() => {
@@ -75,7 +76,7 @@ if(status === 200){
       }}
     >
       {
-        load ? <div className="d-flex justify-content-center align-items-center" style={{minHeight : "100vh"}} > <Loading width = {"8rem"} /> </div> : <BrowserRouter>
+        load ? <PreLoading />: <BrowserRouter>
         <AdminRoute  >
           <Routes>  
             {/* admin */}
