@@ -17,8 +17,8 @@ import Spinner from '../../Spinner';
 
 
 function Product() {
-  const [category,setCategory] = useState();
-  const [search,setSearch] = useState()
+  const [category,setCategory] = useState("");
+  const [search,setSearch] = useState("")
   const navigate = useNavigate();
    const dispatch = useDispatch();
      const products = useSelector((state)=> state.productReducer.product);
@@ -41,7 +41,6 @@ function Product() {
     }
 
     useEffect(()=>{
-   
       dispatch(getCategory());
      },[]);
 
@@ -52,7 +51,6 @@ function Product() {
         category,
         search,
       })) 
-
      },[search,category])
   return (
     <Container className='product-container'>   

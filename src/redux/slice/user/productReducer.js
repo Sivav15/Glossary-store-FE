@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getAdminProductApi, getAdminSelectedProductApi } from '../../../utils/api';
+import {getAdminSelectedProductApi } from '../../../utils/api';
 
 
 
@@ -11,22 +11,13 @@ const  initialState = {
 
 
 export const getProduct = createAsyncThunk("product/getProduct", async(q) => {
-
+    try {    
   const { category, search} = q
-    try {
-      if(search || category){
-      
         return fetch(`${getAdminSelectedProductApi}/?category=${category}&search=${search}`)
         .then((resp) => resp.json())
-        
-      }else{
-        return fetch(getAdminProductApi)
-        .then((resp) => resp.json())
-      }
     } catch (error) {
       console.log(error);
-    }
-       
+    }   
     });
 
 const productReducer = createSlice({
