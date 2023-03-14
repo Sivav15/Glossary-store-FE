@@ -62,7 +62,7 @@ const db = async()=>{
 try {
   const {status,data} = await axios.get(api)
 if(status === 200){
-  // setLoad(false)
+  setLoad(false)
 }
 } catch (error) {
   console.log(error);
