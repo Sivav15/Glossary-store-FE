@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { setMenuToggle } from "./redux/slice/toggleReducer";
@@ -35,23 +35,47 @@ import Otp from "./components/auth/otp/Otp";
 
 
 
+import Loading from "./components/Loading";
+import { api } from "./utils/api";
+import axios from "axios";
+
+
+
+
 
 
 
 
 
 function App() {
-
+const [load,setLoad] = useState(true)
   const dispatch = useDispatch();
   // onWheel={()=> dispatch(setCartToggle(false))}
   // ; dispatch(setCartToggle(false))}
+
+useEffect(()=>{
+console.log("sivanathan.........");
+db()
+},[])
+const db = async()=>{
+try {
+  const {status,data} = await axios.get(api)
+if(status === 200){
+  setLoad(false)
+}
+} catch (error) {
+  console.log(error);
+}
+}
+
   return (
     <div
       onWheel={() => {
         dispatch(setMenuToggle(false));
       }}
     >
-      <BrowserRouter>
+      {
+        load ? <div> <Loading /> </div> : <BrowserRouter>
         <AdminRoute  >
           <Routes>  
             {/* admin */}
@@ -118,6 +142,7 @@ function App() {
         </Routes>
     
       </BrowserRouter>
+      }
     </div>
   );
 }
