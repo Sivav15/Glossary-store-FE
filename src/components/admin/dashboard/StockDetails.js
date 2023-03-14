@@ -15,9 +15,7 @@ function StockDetails() {
     const [product,setProduct] = useState("");
     const dispatch = useDispatch();
     const dashboardProduct = useSelector((state)=> state.adminProductReducer.dashboardProduct)
-    useEffect(()=>{
-        dispatch(getDashboardProduct())
-      },[])
+
       useEffect(()=>{
         dispatch(getDashboardProduct({
             product,

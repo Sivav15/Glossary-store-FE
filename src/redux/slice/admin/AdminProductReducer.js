@@ -25,14 +25,9 @@ try {
 
 export const getDashboardProduct = createAsyncThunk("adminProduct/getDashboardProduct",async(q)=>{
   try {
-          if(q){
             const { stock, product } = q
             let data = await fetch(`${dashboardProducts}/?product=${product}&stock=${stock}`)
             return await data.json();
-          }else{
-            let data = await fetch(dashboardProducts)
-            return await data.json();
-          }
       } catch (error) {
         console.log(error);
       }
