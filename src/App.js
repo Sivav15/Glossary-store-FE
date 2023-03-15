@@ -35,8 +35,7 @@ import Otp from "./components/auth/otp/Otp";
 
 
 
-import Loading from "./components/Loading";
-import { api } from "./utils/api";
+import { getAdminSelectedProductApi } from "./utils/api";
 import axios from "axios";
 import PreLoading from "./components/preLoading/PreLoading";
 
@@ -60,7 +59,7 @@ db()
 },[])
 const db = async()=>{
 try {
-  const {status,data} = await axios.get(api)
+  const {status,data} = await axios.get(`${getAdminSelectedProductApi}/?category=""&search=""`)
 if(status === 200){
   setLoad(false)
 }
