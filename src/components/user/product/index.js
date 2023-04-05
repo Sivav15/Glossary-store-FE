@@ -52,6 +52,8 @@ function Product() {
         search,
       })) 
      },[search,category])
+
+     console.log(products);
   return (
     <Container className='product-container'>   
 <h1 class="products-heading"> Products</h1>
@@ -100,22 +102,25 @@ function Product() {
 <Row className='justify-content-center'>
 
   {
-    loading ? <div className="d-flex justify-content-center"><Spinner  width={"2rem"}/></div> : products.map((product,index)=>{
-      return <Col sm={6} md = {6} xl={4} xxl={3} className="product-card " key={index}>
-    <div>
-    <img src={product.image} alt={product.product}/>
-      <h3>{product.product}</h3>
-      <p>Amount : <Currency width={"1.2rem"}/>{product.amount}{" "}/{product.unit}</p>
-      {
-        product.availableInStock < 10 && product.availableInStock > 0 ? <p style={{
-          color : "red",
-        }} >only {product.availableInStock} stock available</p>: product.availableInStock === 0 ? <p style={{color : "red" }} >Out of stock</p> : <p style={{color : "blue"}}>{product.availableInStock} stock is available</p>
-      }
-      <Button variant="secondary"  className='product-button' disabled={product.availableInStock === 0 ? true : false} onClick={()=> cart(product)}>Add to cart</Button>
-      <Button variant="secondary" className='product-button ms-1'   disabled={product.availableInStock === 0 ? true : false} onClick={()=> buyOrder(product)}> Buy Now</Button>
-    </div>
-  </Col>
-  })
+    loading ? <div className="d-flex justify-content-center"><Spinner  width={"2rem"}/></div> :
+   products.length > 0 ?   products.map((product,index)=>{
+    return <Col sm={6} md = {6} xl={4} xxl={3} className="product-card " key={index}>
+  <div>
+  <img src={product.image} alt={product.product}/>
+    <h3>{product.product}</h3>
+    <p>Amount : <Currency width={"1.2rem"}/>{product.amount}{" "}/{product.unit}</p>
+    {
+      product.availableInStock < 10 && product.availableInStock > 0 ? <p style={{
+        color : "red",
+      }} >only {product.availableInStock} stock available</p>: product.availableInStock === 0 ? <p style={{color : "red" }} >Out of stock</p> : <p style={{color : "blue"}}>{product.availableInStock} stock is available</p>
+    }
+    <Button variant="secondary"  className='product-button' disabled={product.availableInStock === 0 ? true : false} onClick={()=> cart(product)}>Add to cart</Button>
+    <Button variant="secondary" className='product-button ms-1'   disabled={product.availableInStock === 0 ? true : false} onClick={()=> buyOrder(product)}> Buy Now</Button>
+  </div>
+</Col>
+})
+: <div className="d-flex justify-content-center text-danger"><h4>Product not found</h4></div>
+
   }
   
 
