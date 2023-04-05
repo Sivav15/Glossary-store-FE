@@ -34,7 +34,7 @@ export const login = `${host}/auth/login`;
 export const forgotPassword = `${host}/auth/forgotPassword`;
 export const passwordResetPage = `${host}/auth/passwordResetPage`;
 export const sendOtp = `${host}/auth/sendOtp`;
-export const otpVerification = `${host}/auth//otpVerification`;
+export const otpVerification = `${host}/auth/otpVerification`;
 
 
 
